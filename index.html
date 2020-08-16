@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name="google-signin-client_id" content="5733313253-r5heq9tatoat8memd8e4clt6fcg0lbfc.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -86,20 +87,38 @@
     <img class="mb-4" src="img/login.png" alt="" width="" height="72">
     <h1 class="h3 mb-3 font-weight-normal">Inicio de sesión</h1>
     <label for="inputEmail" class="sr-only">Dirección de email</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <input type="email" id="inputEmail" class="form-control" placeholder="Dirección de email" required="" autofocus="">
     <label for="inputPassword" class="sr-only">Contraseña</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Recuérdame
       </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <p class="mt-5 mb-3 text-muted">Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
   </form>
+  <script>
+    function onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    }
+  </script>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 
 </html>
