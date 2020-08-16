@@ -97,6 +97,7 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
     <p class="mt-5 mb-3 text-muted">Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
   </form>
   <script>
@@ -118,6 +119,12 @@
       localStorage.setItem('usuario', profile.getName());
       //location.href = "https://victor1mrs.github.io/JaP_repo_ecommerce/cover.html"
       //window.location = "cover.html";
+    }
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+        console.log('User signed out.');
+      });
     }
   </script>
 
