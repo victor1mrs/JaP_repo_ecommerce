@@ -1,6 +1,6 @@
-const ORDER_ASC_BY_NAME = "AZ";
+/*const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
-const ORDER_BY_PROD_COUNT = "Cant.";
+const ORDER_BY_PROD_COUNT = "Cant.";        CAMBIAR PARA TAREA DE FILTRADO*/
 var currentCategoriesArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
