@@ -5,6 +5,7 @@ var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
+var buscar = undefined;
 
 function sortProducts(criteria, array) {
     let result = [];
@@ -39,11 +40,14 @@ function showProductsList() {
     let htmlContentToAppend = "";
     for (let i = 0; i < currentProductsArray.length; i++) {
         let producto = currentProductsArray[i];
+        let aBuscar = producto.name + producto.description;
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(producto.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(producto.cost) <= maxCount))) {
 
-            htmlContentToAppend += `
+            if (buscar == undefined || aBuscar.toLowerCase().indexOf(buscar) != -1) {
+
+                htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="row">
                     <div class="col-3">
@@ -59,6 +63,7 @@ function showProductsList() {
                 </div>
         </a>`
 
+            }
         }
 
         document.getElementById("prod-list-container").innerHTML = htmlContentToAppend;
@@ -134,6 +139,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
             maxCount = undefined;
         }
 
+        showProductsList();
+    });
+    document.getElementById("buscador").addEventListener("input", function () {
+        buscar = document.getElementById("buscador").value.toLowerCase();
+        showProductsList();
+    });
+
+    document.getElementById("limpBusc").addEventListener("click", function () {
+        document.getElementById("buscador").value = "";
+        buscar = undefined;
         showProductsList();
     });
 });
