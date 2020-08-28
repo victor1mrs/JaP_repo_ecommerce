@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="google-signin-client_id" content="5733313253-r5heq9tatoat8memd8e4clt6fcg0lbfc.apps.googleusercontent.com">
+  <!--<meta name="google-signin-client_id" content="5733313253-r5heq9tatoat8memd8e4clt6fcg0lbfc.apps.googleusercontent.com">-->
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -103,12 +103,12 @@
       </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar sesión</button>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
     <a href="#" onclick="signOut();">Sign out</a>
     <p class="mt-5 mb-3 text-muted">Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
   </form>
   <script>
-    function onSignIn(googleUser) {
+    /*function onSignIn(googleUser) {
       // Useful data for your client-side scripts:
       var profile = googleUser.getBasicProfile();
       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -126,7 +126,7 @@
       localStorage.setItem('usuario', profile.getName());
       //location.href = "https://victor1mrs.github.io/JaP_repo_ecommerce/cover.html"
       window.location = "cover.html";
-    }
+    }*/
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
