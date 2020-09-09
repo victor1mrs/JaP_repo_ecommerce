@@ -6,10 +6,6 @@ function showComments(arrayComments) {
     let comments = "<hr>";
     for (let comment in arrayComments) {
         let puntos = "";
-        //comments += '<strong>' + arrayComments[comment].user + '</strong> ' + arrayComments[comment].dateTime;
-        //comments += '<div> ' + arrayComments[comment].dateTime + '</div><br>';
-        
-        //comments += 'Calificacion: <strong>' + arrayComments[comment].score + '</strong>';
         for (let i = 1; i <= arrayComments[comment].score; i++) {
             puntos += '<span class="fa fa-star checked"></span>';
         }
@@ -17,8 +13,7 @@ function showComments(arrayComments) {
         for (let i = arrayComments[comment].score + 1; i <= 5; i++) {
             puntos += '<span class="fa fa-star"></span>';
         }
-        comments += '<strong>' + arrayComments[comment].user + '</strong>' + '&nbsp;&nbsp;&nbsp;' + arrayComments[comment].dateTime + '&nbsp;&nbsp;&nbsp;' + puntos + '<br>';
-        //comments += '<div style="text-align: right;">' + puntos + '</div><br>';
+        comments += '<strong>' + arrayComments[comment].user + '</strong>' + '&nbsp;&nbsp;&nbsp;<span style= font-size:75%;>' + arrayComments[comment].dateTime + '</span>&nbsp;&nbsp;&nbsp;' + puntos + '<br>';
         comments += '<div>' + arrayComments[comment].description + '</div><hr>';
     }
     document.getElementById("productComments").innerHTML = comments;
@@ -55,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showComments(comentariosArray);
         }
     });
+
     getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             product = resultObj.data;
@@ -75,4 +71,26 @@ document.addEventListener("DOMContentLoaded", function (e) {
             showImagesGallery(product.images);
         }
     });
+
+    let userLogged = localStorage.getItem('User-Logged');
+    if (userLogged) {
+        document.getElementById("newCommentContent").style = "display:inline-block";
+    }
+
+    document.getElementById("enviarComm").addEventListener("click", function () {
+        let now = new Date();
+        let dateTime = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} `;
+        dateTime += `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
+        let newComment = {
+            score: parseInt(document.getElementById('newCal').value),
+            description: document.getElementById('newComm').value,
+            user: JSON.parse(localStorage.getItem('User-Logged')).email,
+            dateTime: dateTime
+        };
+
+        comentariosArray.push(newComment);
+        showComments(comentariosArray);
+
+    })
 });
