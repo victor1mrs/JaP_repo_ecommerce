@@ -46,12 +46,13 @@ var getJSONData = function(url){
 document.addEventListener("DOMContentLoaded", function(e){
 
   let userLogged = localStorage.getItem('User-Logged');
-  //let infoUser = document.getElementById("info-user");
+  let infoUser = document.getElementById("info-user");
   let user = document.getElementById("user");
 
   if(userLogged){
     userLogged = JSON.parse(userLogged);
     user.innerText = user.innerText + userLogged.email;
+    infoUser.style = "display: inline=block";
     user.style = "display: inline=block";
   }
   else{
