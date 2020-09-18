@@ -19,13 +19,25 @@
 <body>
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="cover.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a id="salir" class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Sign out</a>
-      <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
+      <a class="py-2 d-none d-md-inline-block mt-2" href="cover.html">Inicio</a>
+      <a class="py-2 d-none d-md-inline-block mt-2" href="categories.html">Categorías</a>
+      <a class="py-2 d-none d-md-inline-block mt-2" href="products.html">Productos</a>
+      <a class="py-2 d-none d-md-inline-block mt-2" href="sell.html">Vender</a>
+      <!--<a class="py-2 d-none d-md-inline-block mt-2" href="cart.html">Mi carrito</a>-->
+      <!--<a id="salir" class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Sign out</a>-->
+      <!--<div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>-->
+      <div class="dropdown">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
+        </a>
+      
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="dropdown-item" href="cart.html">Carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" a id="salir" href="index.html" onclick="signOut();">Cerrar Sesion</a>
+        </div>
+      </div>
     </div>
   </nav>
   <main role="main">

@@ -141,5 +141,6 @@ a.custom-card:hover {
 }
 
 .userStyle{
-  color: rgb(214, 28, 108);
+  /*color: rgb(214, 28, 108);*/
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
