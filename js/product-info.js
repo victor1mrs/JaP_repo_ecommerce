@@ -4,17 +4,19 @@ var productArray = [];
 
 function mostrarRelacionados(arrayProductos, arrayRelacionados){
     let contenido = '';
-    arrayRelacionados.forEach(function(i){
+    //arrayRelacionados.forEach(function(i){
+    for(let i=0;i<arrayRelacionados.length;i++){
         contenido += `<div class="col-md-4">
               <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
-                <img class="bd-placeholder-img card-img-top" src="` + arrayProductos[i].imgSrc + `">
-                <h3 class="m-3">` + arrayProductos[i].name + `</h3>
+                <img class="bd-placeholder-img card-img-top" src="` + arrayProductos[arrayRelacionados[i]].imgSrc + `">
+                <h3 class="m-3">` + arrayProductos[arrayRelacionados[i]].name + `</h3>
                 <div class="card-body">
-                  <p class="card-text">` + arrayProductos[i].description + `</p>
+                  <p class="card-text">` + arrayProductos[arrayRelacionados[i]].description + `</p>
                 </div>
               </a>
             </div>`
-    });
+    }
+    //});
     document.getElementById("prodRel").innerHTML = contenido;
 }
 
@@ -83,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let numImg = i+1;
                 document.getElementById("img"+numImg).src = product.images[i];
             }
-            
+
             /*document.getElementById("img1").src = product.images[0];
             document.getElementById("img2").src = product.images[1];
             document.getElementById("img3").src = product.images[2];
