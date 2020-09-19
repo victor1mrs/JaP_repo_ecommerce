@@ -1,6 +1,22 @@
 var product = {};
 var comentariosArray = [];
+var productArray = [];
 
+function mostrarRelacionados(arrayProductos, arrayRelacionados){
+    let contenido = '';
+    arrayRelacionados.forEach(function(i){
+        contenido += `<div class="col-md-4">
+              <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                <img class="bd-placeholder-img card-img-top" src="` + arrayProductos[i].imgSrc + `">
+                <h3 class="m-3">` + arrayProductos[i].name + `</h3>
+                <div class="card-body">
+                  <p class="card-text">` + arrayProductos[i].description + `</p>
+                </div>
+              </a>
+            </div>`
+    });
+    document.getElementById("prodRel").innerHTML = contenido;
+}
 
 function showComments(arrayComments) {
     let comments = "<hr>";
@@ -19,26 +35,19 @@ function showComments(arrayComments) {
     document.getElementById("productComments").innerHTML = comments;
 }
 
-function showImagesGallery(array) {
-
+/*function showImagesGallery(array) {
     let htmlContentToAppend = "";
-
     for (let i = 0; i < array.length; i++) {
         let imageSrc = array[i];
-
         htmlContentToAppend += `
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
                 <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
             </div>
-        </div>
-        `
-
+        </div> `
         document.getElementById("carImagesGallery").innerHTML = htmlContentToAppend;
     }
-}
-
-
+}*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -68,7 +77,18 @@ document.addEventListener("DOMContentLoaded", function (e) {
             productCategoryHTML.innerHTML = product.category;
 
             //Muestro las imagenes en forma de galería
-            showImagesGallery(product.images);
+            //showImagesGallery(product.images);
+
+           for(let i=0; i<product.images.length;i++){    
+            let numImg = i+1;
+                document.getElementById("img"+numImg).src = product.images[i];
+            }
+            
+            /*document.getElementById("img1").src = product.images[0];
+            document.getElementById("img2").src = product.images[1];
+            document.getElementById("img3").src = product.images[2];
+            document.getElementById("img4").src = product.images[3];
+            document.getElementById("img5").src = product.images[4];*/
         }
     });
 
@@ -93,4 +113,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
         showComments(comentariosArray);
 
     })
+
+    getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok"){
+            productArray = resultObj.data;
+            mostrarRelacionados(productArray,product.relatedProducts);
+        }
+    });
 });
