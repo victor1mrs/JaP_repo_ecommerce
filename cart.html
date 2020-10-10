@@ -41,10 +41,10 @@
       <a class="py-2 d-none d-md-inline-block mt-2" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block mt-2" href="sell.html">Vender</a>
       <div class="dropdown" id="info-user" style="display: none;">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
         </a>
-      
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
           <a class="dropdown-item" href="cart.html">Carrito</a>
           <a class="dropdown-item" href="my-profile.html">Perfil</a>
@@ -54,14 +54,48 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main role="main" class="container pb-5">
+    <div class="text-center p-4">
+      <h2>Carrito de compras</h2>
+      <p class="lead">
+        Encontrarás aquí los productos que hayas seleccionado para comprar.
+      </p>
+      <br><br><br>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>Imágen</th>
+            <th>Nombre</th>
+            <th>Moneda</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Monto a pagar (UYU)</th>
+          </tr>
+        </thead>
+        <tbody id="listado">
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">Monto <strong>TOTAL sin envío</strong> a pagar (en pesos uruguayos)</td>
+            <td id="total"></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-  </div>
+    <br>
+    <div class="p-4 border border-secondary">
+      <div class="p-4" style="background-color: white">
+      <h4>Tipo de envío</h4>
+      <input type="radio" name="envio" id="premium" value="15" checked="" required=""> <!-- En value indico el costo como porcentaje sobre el subtotal-->
+      <label for="premium">Premium: 2 a 5 días</label><br>
+      <input type="radio" name="envio" id="express" value="7" checked="" required="">
+      <label for="express">Express: 5 a 8 días</label><br>
+      <input type="radio" name="envio" id="standard" value="5" checked="" required="">
+      <label for="standard">Standard: 12 a 15 días</label><br>
+    </div>
+    </div>
+    <br>
+  </main>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
