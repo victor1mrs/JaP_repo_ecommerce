@@ -54,106 +54,131 @@
       </div>
     </div>
   </nav>
-  <main role="main" class="container pb-5" id="carrito">
-    <div class="text-center p-4">
-      <h2>Carrito de compras</h2>
-      <p class="lead">
-        Encontrarás aquí los productos que hayas seleccionado para comprar.
-      </p>
-      <br><br><br>
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th>Imágen</th>
-            <th>Nombre</th>
-            <th>Moneda</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Monto a pagar (UYU)</th>
-          </tr>
-        </thead>
-        <tbody id="listado">
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5">Monto <strong>TOTAL sin envío</strong> a pagar (en pesos uruguayos)</td>
-            <td id="total"></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <br>
-    <button class="btn btn-block btn-success" data-toggle="modal" data-target="#modalPagar">Forma de pago</button>
-    <br>
-
-    <div class="modal fade" id="modalPagar">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Ingrese sus datos</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+  <div id="carrito">
+    <main role="main" class="container pb-5" id="">
+      <div class="text-center p-4">
+        <h2>Carrito de compras</h2>
+        <p class="lead">
+          Encontrarás aquí los productos que hayas seleccionado para comprar.
+        </p>
+        <br><br><br>
+        <table class="table table-bordered">
+          <thead class="thead-light">
+            <tr>
+              <th>Imágen</th>
+              <th>Nombre</th>
+              <th>Moneda</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Monto a pagar (UYU)</th>
+            </tr>
+          </thead>
+          <tbody id="listado">
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">Monto <strong>TOTAL sin envío</strong> a pagar (en pesos uruguayos)</td>
+              <td id="total"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <br>
+      <form id="needs-validation" novalidate>
+        <div class="tipoDeEnvio">
+          <h4>Tipo de Envio:</h4>
+          <div class="form-group">
+            <!-- En value indico el costo como porcentaje sobre el subtotal-->
+            <div class="form-check">
+              <label class="form-check-label" for="premium">
+                <input type="radio" class="form-check-input" id="premium" name="envio" value="15" checked>Premium: 2 a 5
+                días
+                (15%)
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="express">
+                <input type="radio" class="form-check-input" id="express" name="envio" value="7">Express: 5 a 8 días
+                (7%)
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="standard">
+                <input type="radio" class="form-check-input" id="standard" name="envio" value="5">Standard: 12 a 15 días
+                (5%)
+              </label>
+            </div>
           </div>
-          <div class="modal-body">
-            <form action="cover.html" class="was-validated needs-validation" novalidate>
-              <div>
-                <h4>Tipo de Envio:</h4>
-                <div class="form-group">
+          <div id=totalEnvio>
+          </div>
+          <br>
+          <button id="btnPago" class="btn btn-block btn-success" data-toggle="modal" data-target="#modalPagar">Forma de
+            pago</button>
 
-                  <!-- En value indico el costo como porcentaje sobre el subtotal-->
-                  <div class="form-check">
-                    <label class="form-check-label" for="premium">
-                      <input type="radio" class="form-check-input" id="premium" name="envio" value="15" checked>Premium: 2 a 5 días (15%)
-                    </label>
+          <br>
+        </div>
+        <div class="modal fade" id="modalPagar">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Ingrese sus datos</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div class="formaDePago">
+                  <label for="depto">Información para el envío</label><br>
+                  <div class="form-group">
+                    <input id="direccion" type="text" class="form-control" placeholder="Direccion" required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor rellene este campo.</div>
                   </div>
-                  <div class="form-check">
-                    <label class="form-check-label" for="express">
-                      <input type="radio" class="form-check-input" id="express" name="envio" value="7">Express: 5 a 8 días (7%)
-                    </label>
+                  <div class="form-group">
+                    <input id="pais" type="text" class="form-control" placeholder="Pais" required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor rellene este campo.</div>
                   </div>
-                  <div class="form-check">
-                    <label class="form-check-label" for="standard">
-                      <input type="radio" class="form-check-input" id="standard" name="envio" value="5">Standard: 12 a 15 días (5%)
-                    </label>
+                  <div class="pagar" id="pagar">
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <label for="depto">Forma de Pago</label><br>
+                    <input id="tarjeta" name="formaPago" type="radio" value="1" checked=""
+                      onchange="seleccionarPago();">
+                    <label for="tarjeta">Tarjeta de credito</label><br>
+                    <input id="bancaria" name="formaPago" type="radio" value="2" onchange="seleccionarPago();">
+                    <label for="bancaria">Transferencia bancaria</label><br>
+
+                  </div>
+                  <div id="datosTarjeta" class="">
+                    <input id="numTarjeta" type="number" class="form-control" placeholder="Numero de tarjeta" required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor rellene este campo.</div><br>
+                    <input id="titularTarjeta" type="text" class="form-control" placeholder="Titular de la tarjeta"
+                      required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor rellene este campo.</div>
+                  </div>
+                  <div id="datosBanco" class="d-none">
+                    <input id="cuenta" type="number" class="form-control" placeholder="Numero de cuenta" required>
+                    <div class="valid-feedback">Válido</div>
+                    <div class="invalid-feedback">Por favor rellene este campo.</div>
                   </div>
                 </div>
-                
-                <div id=totalEnvio>
-                </div>
-                <br>
-                <h4>Datos para el envío:</h4>
-                <br>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Direccion" required>
-                  <div class="valid-feedback">Válido</div>
-                  <div class="invalid-feedback">Por favor rellene este campo.</div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Pais" required>
-                  <div class="valid-feedback">Válido</div>
-                  <div class="invalid-feedback">Por favor rellene este campo.</div>
+
+                <div class="modal-footer">
+                  <div id="carrito2"></div>
+                  <button type="submit" class="btn btn-block btn-success">Confirmar Compra</button><br>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><br>
+
                 </div>
               </div>
-              <div>
-                <div class="form-group">
-                  <label for="depto">Forma de Pago</label><br>
-                  <select class="form-control" name="" id="depto" required>
-                    <option value="1">Tarjeta de Credito</option>
-                    <option value="2">Transferencia Bancaria</option>
-                  </select>
-                  <div class="valid-feedback">Válido</div>
-                  <div class="invalid-feedback">Por favor seleccione una opcion.</div>
-                </div><br>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-block btn-success">Confirmar Compra</button><br>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button><br>
-              </div>
-            </form>
+
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </main>
+      </form>
+    </main>
+  </div>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -162,29 +187,8 @@
       <div></div>
     </div>
   </div>
-  
-  <script>
-    // Disable form submissions if there are invalid fields
-    (function () {
-      'use strict';
-      window.addEventListener('load', function () {
-        // Get the forms we want to add validation styles to
-        var forms = document.getElementsByClassName('needs-validation');
-        // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
-          form.addEventListener('submit', function (event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-    })();
-  </script>
 
-  <script>
+<script>
     function signOut() {
       var auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
