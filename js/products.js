@@ -48,7 +48,8 @@ function showProductsList() {
             if (buscar == undefined || aBuscar.toLowerCase().indexOf(buscar) != -1) {
 
                 htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
+            <div class="col-md-6 col-sm-12">
+                <a href="product-info.html" class="list-group-item list-group-item-action">
             <div class="row">
                     <div class="col-3">
                         <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
@@ -61,7 +62,8 @@ function showProductsList() {
                         <p class="mb-1">` + producto.description + `</p>
                     </div>
                 </div>
-        </a>`
+        </a>
+        </div>`
 
             }
         }
@@ -91,9 +93,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
             sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
-            /*productsArray = resultObj.data;
-            //Muestro las categorías ordenadas
-            showProductsList(productsArray);*/
         }
     });
 

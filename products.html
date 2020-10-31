@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,15 +15,18 @@
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <!--<nav class="navbar collapse navbar-collapse site-header sticky-top navbar-expand-md py-1 bg-dark" id="collapsibleNavbar">
+    
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block mt-2" href="cover.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block mt-2" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block mt-2" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block mt-2" href="sell.html">Vender</a>
-      <!--<a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" href="index.html" onclick="signOut();">Sign out</a>
-      <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>-->
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="py-2 d-none d-md-inline-block mt-2" href="cover.html">Inicio</a>
+        <a class="py-2 d-none d-md-inline-block mt-2" href="categories.html">Categorías</a>
+        <a class="py-2 d-none d-md-inline-block mt-2" href="products.html">Productos</a>
+        <a class="py-2 d-none d-md-inline-block mt-2" href="sell.html">Vender</a>
+      
       <div class="dropdown" id="info-user" style="display: none;">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
@@ -38,7 +40,46 @@
         </div>
       </div>
     </div>
+  </nav>-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fluid">
+    <div class="dropdown" id="info-user" style="display: none;">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" style="margin-right:125px;">
+        <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="cart.html">Carrito</a>
+        <a class="dropdown-item" href="my-profile.html">Perfil</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" a id="salir" href="index.html" onclick="signOut();">Cerrar Sesion</a>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="cover.html" style="margin-right:125px;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html" style="margin-right:125px;">Categorias</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="products.html" style="margin-right:125px;">Productos<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+
+      </ul>
+    </div>
   </nav>
+
   <main role="main" class="pb-5">
     <div class="text-center p-4">
       <h2>Productos</h2>
@@ -46,57 +87,51 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col text-right">
-          <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <div class="col">
-              <div class="font-weight-normal text-right my-2">Buscar</div>
-            </div>
-            <input class="form-control" type="text" id="buscador">
-            <button class="btn btn-link btn-sm" id="limpBusc">Limpiar busqueda</button>
-            <label class="btn btn-light active" id="sortAsc">
-              <input type="radio" name="options" autocomplete="off" checked><i
-                class="fas fa-sort-amount-down mr-1"></i>$
-            </label>
-            <label class="btn btn-light" id="sortDesc">
-              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>$
-            </label>
-            <label class="btn btn-light" id="sortByCount">
-              <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Rel.
-            </label>
-          </div>
+        <div class="col-md-5 col-sm-12 col-12">
+          <input class="form-control" type="text" id="buscador" placeholder="Buscar">
+        </div>
+        <div class="col-md-3 col-sm-5 col-4">
+          <button class="btn btn-link btn-sm" id="limpBusc">Limpiar busqueda</button>
+        </div>
+        <div class="col-md-3 col-sm-7 col-8">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons"></div>
+          <label class="btn btn-light active" id="sortAsc">
+            <input type="radio" name="options" autocomplete="off" checked><i class="fas fa-sort-amount-down mr-1"></i>$
+          </label>
+          <label class="btn btn-light" id="sortDesc">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-up mr-1"></i>$
+          </label>
+          <label class="btn btn-light" id="sortByCount">
+            <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Rel.
+          </label>
         </div>
       </div>
-      <div class="row justify-content-end">
-        <div class="col-md-6"></div>
-        <div class="col-md-6 col-sm-12 mb-1 container">
-          <div class="row container p-0 m-0">
-
-            <!--<div class="font-weight-normal text-right my-2">Buscar: </div>
-            <input class="form-control" type="text" id="buscador">
-            <button class="btn btn-link btn-sm" id="limpBusc">Limpiar busqueda</button>-->
-
-            <div class="col">
-              <p class="font-weight-normal text-right my-2">Precio</p>
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-            </div>
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-              </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-sm-12 mb-1 container">
+        <div class="row container p-0 m-0">
+          <div class="col">
+            <p class="font-weight-normal text-right my-2">Precio</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+          </div>
+          <div class="col-3 p-0">
+            <div class="btn-group" role="group">
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="list-group" id="prod-list-container">
-        </div>
-      </div>
+    </div>
+
+    <div class="row" id="prod-list-container">
+    </div>
+
     </div>
   </main>
   <footer class="text-muted bg-light">
