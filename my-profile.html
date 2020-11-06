@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
 
 <head>
@@ -12,28 +11,55 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+
+  <style>
+    div.polaroid {
+      width: 80%;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin-bottom: 25px;
+    }
+  </style>
 </head>
 
 <body>
+  <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fluid">
+    <div class="dropdown" id="info-user" style="display: none;">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false" style="margin-right:125px;">
+        <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="cart.html">Carrito</a>
+        <a class="dropdown-item" href="my-profile.html">Perfil</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" a id="salir" href="index.html" onclick="signOut();">Cerrar Sesion</a>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="cover.html" style="margin-right:125px;">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html" style="margin-right:125px;">Categorias</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="products.html" style="margin-right:125px;">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+      </ul>
+    </div>
+  </nav>-->
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block mt-2" href="cover.html">Inicio</a>
@@ -54,14 +80,45 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <main>
+    <div class="text-center p-4">
+      <h2>Mi Perfil</h2>
+      <p class="lead">Verás aquí toda la informaión de tu perfil</p>
     </div>
-  </div>
+    <div class="container m-3 p-5 mx-auto" style="background-color: rgb(240, 214, 229); border-radius:25px;">
+      <!-- imagen para subir https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png -->
+      <div class="divPerfil">
+        <div class="row"> 
+          <div class="col-md-6">
+            <div class="polaroid float-left" style="width:100%;">
+              <img src="img/perfil.png" id="imgPerfil" alt="profile" style="margin-bottom: 15px; width:100%;">
+              <div class="container pb-4" style="text-align: center; padding: 10px 20px;">
+                <div my-5 py-5>
+                  <input type="text" class="form-control" id="imgUrl" placeholder="url para la imagen de perfil" value="">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mx-auto">
+              <label for="nombres">*Nombres: </label>
+              <input type="text" class="form-control" id="nombres" value=""><br>
+              <label for="apellidos">*Apellidos: </label>
+              <input type="text" class="form-control" id="apellidos" value=""><br>
+              <label for="edad">Edad: </label>
+              <input type="number" class="form-control" id="edad" value=""><br>
+              <label for="email">*E-mail: </label>
+              <input type="email" class="form-control" id="email" value=""><br>
+              <label for="telefono">Telefono: </label>
+              <input type="text" class="form-control" id="telefono" value=""><br>
+              <hr>
+              <button class="btn btn-secondary" id="guardar">Guardar cambios</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
@@ -82,14 +139,7 @@
       <div></div>
     </div>
   </div>
-  <script>
-    function signOut() {
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        console.log('User signed out.');
-      });
-    }
-  </script>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>

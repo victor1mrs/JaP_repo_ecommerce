@@ -15,32 +15,6 @@
 </head>
 
 <body>
-  <!--<nav class="navbar collapse navbar-collapse site-header sticky-top navbar-expand-md py-1 bg-dark" id="collapsibleNavbar">
-    
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-      
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="py-2 d-none d-md-inline-block mt-2" href="cover.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block mt-2" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block mt-2" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block mt-2" href="sell.html">Vender</a>
-      
-      <div class="dropdown" id="info-user" style="display: none;">
-        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="py-2 d-none d-md-inline-block userStyle" id="user"></div>
-        </a>
-      
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="cart.html">Carrito</a>
-          <a class="dropdown-item" href="my-profile.html">Perfil</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" a id="salir" href="index.html" onclick="signOut();">Cerrar Sesion</a>
-        </div>
-      </div>
-    </div>
-  </nav>-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fluid">
     <div class="dropdown" id="info-user" style="display: none;">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -107,29 +81,27 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6 col-sm-12 mb-1 container">
-        <div class="row container p-0 m-0">
-          <div class="col">
-            <p class="font-weight-normal text-right my-2">Precio</p>
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-          <div class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-            </div>
+    <div class="container mb-4">
+      <div class="row">
+        <div class="col-md-1 col-3 pt-2 pl-3">
+          <p class="font-weight-normal">Precio</p>
+        </div>
+        <div class="col-md-2 col-4">
+          <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+        </div>
+        <div class="col-md-2 col-4">
+          <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+        </div>
+        <div class="col-md-6 col-12">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="row" id="prod-list-container">
+    <div class="container">
+      <div class="row" id="prod-list-container"></div>
     </div>
 
     </div>
