@@ -10,7 +10,7 @@ function calcTotal(){
     document.getElementById("total").innerHTML = total;
     calcEnvio();
 }
-
+//this is just another testing activitys
 function calcSubtotal(precio, i, moneda){
     let cantidad = parseInt(document.getElementById(`cantidad${i}`).value);
     subtotal = cantidad * precio;
